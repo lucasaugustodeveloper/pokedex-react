@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { useGetAllPokemonsQuery } from '../../store/services/pokemon'
 
+import Header from '../../components/header'
+
 function App() {
   const { data } = useGetAllPokemonsQuery()
 
@@ -10,9 +12,9 @@ function App() {
   
 
   return (
-    <h1 className="text-3xl font-bold underline text-red-500">
-      Hello World!!!
-    </h1>
+    <div className="container mx-auto">
+      <Header />
+    </div>
   )
 }
 

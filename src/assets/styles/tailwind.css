@@ -2,3 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .header {
+    @apply text-5xl font-bold;
+    @apply flex justify-center items-center;
+    @apply py-5;
+  }
+}
+
