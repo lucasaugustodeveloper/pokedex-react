@@ -3,6 +3,7 @@ import { useGetAllPokemonsQuery } from '../../store/services/pokemon'
 
 import Header from '../../components/header'
 import Search from '../../components/search'
+import Card from '../../components/card'
 
 function App() {
   const { data } = useGetAllPokemonsQuery()
@@ -16,6 +17,11 @@ function App() {
     <div className="container mx-auto">
       <Header />
       <Search />
+
+      <div className="container-pokemons">
+        <Card />
+      </div>
+
     </div>
   )
 }

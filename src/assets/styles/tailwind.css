@@ -8,5 +8,45 @@
     @apply flex justify-center items-center;
     @apply py-5;
   }
-}
 
+  .container-pokemons {
+    @apply grid grid-cols-1 lg:grid-cols-3 gap-4;
+    @apply mt-5;
+  }
+
+  .card-pokemon {
+    @apply flex justify-between items-center;
+    @apply rounded-lg py-10 px-5;
+    @apply bg-white text-stone-700;
+  }
+  
+  .card-pokemon-image {
+    @apply mr-5;
+
+    position: relative;
+  }
+
+  .card-pokemon-image::after {
+    @apply w-44 h-44;
+
+    content: '';
+    clear: both;
+    display: block;
+
+    position: absolute;
+    right: -15px;
+    top: -12px;
+    z-index: 1;
+
+    background-image: url('../background/bg_balls.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .stat {
+    @apply text-base text-center;
+    @apply rounded-full py-0.5;
+    @apply w-28;
+    @apply bg-slate-100;
+  }
+}
