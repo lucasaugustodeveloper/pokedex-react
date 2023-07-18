@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 
 import App from './pages/app'
+import './assets/styles/index.css'
 import './assets/styles/tailwind.css'
 
 import store from './store'
