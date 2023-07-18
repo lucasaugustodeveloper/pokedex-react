@@ -1,25 +1,29 @@
-import pokemon from '../assets/background/bulbasaur.png'
-
-function Card() {
+/* eslint-disable react/prop-types */
+function Card({ name, types, image }) {
   return (
     <div className="card-pokemon">
       <div>
-        <p className="text-5xl font-bold text-stone-700">Bulbasaur</p>
+        <p className="text-5xl font-bold text-stone-700">{name}</p>
 
         <ul className='mt-2'>
-          <li className='stat'>Poison</li>
-          <li className='stat mt-1'>Grass</li>
+          {types.map((type, index) => (
+            <li
+              className={`stat ${index % 2 !== 0 ? 'mt-1' : ''}`}
+              key={type}
+            >
+                {type}
+            </li>
+          ))}
         </ul>
       </div>
 
       <div className="card-pokemon-image">
         <img
-          className='object-cover w-36 h-36 relative z-50'
-          src={pokemon}
+          className='object-contain w-36 h-36 relative z-50'
+          src={image}
           alt="Bulbasaur"
         />
       </div>
-
     </div>
   )
 }

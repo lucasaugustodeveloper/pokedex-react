@@ -6,7 +6,7 @@ import Search from '../../components/search'
 import Card from '../../components/card'
 
 function App() {
-  const { data } = useGetAllPokemonsQuery()
+  const { data, isLoading } = useGetAllPokemonsQuery()
 
   useEffect(() => {
     console.log('data =>', data)
@@ -18,9 +18,21 @@ function App() {
       <Header />
       <Search />
 
-      <div className="container-pokemons">
-        <Card />
-      </div>
+      {isLoading ? (
+        <div className="shapes" />
+      ) : (
+        <div className="container-pokemons">
+          {data.map(pokemon => (
+            <Card
+              key={pokemon.name}
+              name={pokemon.name}
+              types={pokemon.types}
+              image={pokemon.image}
+            />
+          )
+          )}
+        </div>
+      )}
 
     </div>
   )
