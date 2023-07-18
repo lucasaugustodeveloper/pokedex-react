@@ -14,15 +14,12 @@ function App() {
   const handleSearch = (e) => {
     e.preventDefault()
     const pokemon = e.target.value;
+    setSearch(pokemon)
 
     const filteredPokemons = pokemons.filter(({ name }) =>
       name.toLowerCase()
         .indexOf(pokemon.toLowerCase()) === 0
     )
-
-    console.log('filteredPokemons =>', filteredPokemons)
-
-    setSearch(e.target.value)
     
     if (!pokemon) {
       setPokemons(data)
