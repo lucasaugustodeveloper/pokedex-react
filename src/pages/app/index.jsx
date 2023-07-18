@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useGetAllPokemonsQuery } from '../../store/services/pokemon'
 
 import Header from '../../components/header'
+import Search from '../../components/search'
 
 function App() {
   const { data } = useGetAllPokemonsQuery()
@@ -14,6 +15,7 @@ function App() {
   return (
     <div className="container mx-auto">
       <Header />
+      <Search />
     </div>
   )
 }
