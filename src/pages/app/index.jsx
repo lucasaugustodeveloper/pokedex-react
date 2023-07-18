@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useGetAllPokemonsQuery } from '../../store/services/pokemon'
 
 import Header from '../../components/header'
@@ -8,21 +8,46 @@ import Card from '../../components/card'
 function App() {
   const { data, isLoading } = useGetAllPokemonsQuery()
 
+  const [search, setSearch] = useState('')
+  const [pokemons, setPokemons] = useState(data ?? [])
+
+  const handleSearch = (e) => {
+    e.preventDefault()
+    const pokemon = e.target.value;
+
+    const filteredPokemons = pokemons.filter(({ name }) =>
+      name.toLowerCase()
+        .indexOf(pokemon.toLowerCase()) === 0
+    )
+
+    console.log('filteredPokemons =>', filteredPokemons)
+
+    setSearch(e.target.value)
+    
+    if (!pokemon) {
+      setPokemons(data)
+      return false
+    }
+
+    setPokemons(filteredPokemons)
+  }
+
   useEffect(() => {
-    console.log('data =>', data)
+    if (data) {
+      setPokemons(data)
+    }
   }, [data])
-  
 
   return (
     <div className="container mx-auto">
       <Header />
-      <Search />
+      <Search name={search} handleChange={handleSearch} />
 
-      {isLoading ? (
-        <div className="shapes" />
+      {(isLoading || !pokemons.length) ? (
+        <div className="shapes mt-24 mx-auto" />
       ) : (
         <div className="container-pokemons">
-          {data.map(pokemon => (
+          {pokemons.map(pokemon => (
             <Card
               key={pokemon.name}
               name={pokemon.name}
